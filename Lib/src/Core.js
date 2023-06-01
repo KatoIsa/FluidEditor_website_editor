@@ -138,9 +138,11 @@ let retrive = {
     /*retrives data from dataBase and writes to website*/
     get_writeToWebsite: function () {
         for (i = 0, img = 0; i < ele.length, img < websiteImagies.length; i++, img++) {
+            
             ele[i].innerText.length != 0 && ele[i].offsetTop > 50 ? StartWriting() : null;
 
-            //dealing with text documents
+            /*fireebase inserts data into local storage then data is sheeped from local storage to page*/
+            /*function handals website text data*/
             function StartWriting() {
                 db.collection(`${ele[i].id}`).doc(`${ele[i].id}`).get().then(function (doc) {
                     /* injecting data into localStorage.*/
@@ -151,6 +153,7 @@ let retrive = {
 
                 let database_pull = JSON.parse(_.DB.Get(ele[i].id));
 
+                /*check if local storage has data.*/
                 if (database_pull === null) {
                     /* alert('initializing site ....'); */
                 } else {
@@ -159,9 +162,8 @@ let retrive = {
                 }
             }
 
-            /*dealing with images that contain tags*/
+            /*function dealing with images that contain tags*/
             (function imagesWithTag() {
-                /* currentSrc */
                 websiteImagies[img].tagName == 'img' || websiteImagies[img].tagName == 'IMG' ?
                     (() => {
                         /*collects data from dataBase*/
@@ -170,13 +172,13 @@ let retrive = {
                             return db.collection(`${websiteImagies[img].id}`).doc(`${websiteImagies[img].id}`).get().then(
                                 function (doc) {
                                     let elementData = doc.data();
-                                    _.DB.Create(`${elementData.data}`, JSON.stringify(elementData)), _.Print('Wait for data to load');
+                                    _.DB.Create(`${elementData.data}`, JSON.stringify(elementData)), _.Print('Wait for data to load; core.js');
                                 }).catch(function () {
-                                    _.Print('Something went wrong couldnt write to LocalStorage: Core.js line -- 175');
+                                    _.Print('Something went wrong couldnt write to LocalStorage: Core.js');
                                 });
                         };
 
-                        /*Function executes once all data has been retrieved from thie dataBase*/
+                        /*Function executes after all data has been retrieved from thie dataBase*/
                         async function writeDataToWebsite() {
                             await CollectDataFromDataBase();
                             _.Print('Function finished executing');
@@ -230,7 +232,7 @@ let retrive = {
                                     _.DB.Create(`${elementData.data}`, JSON.stringify(elementData));
                                 }
                             ).catch(function () {
-                                _.Print('Something went wrong couldn\'t write to LocalStorage line -- 140');
+                                _.Print('Something went wrong couldn\'t write to LocalStorage');
                             });
                         }
 
