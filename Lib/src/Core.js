@@ -5,32 +5,27 @@
        Author: Kato-Isa-Omoding
        Website: https:/*katoisa256.ga
 */
+
+/* function adds html objects on the website.*/
 (function DRAWHTMLELEMENTS() {
-    /*
-     * Collect element data from dataBase.
-     */
+    
+    /* re-usable function for creating different html elements.*/
     function HTML_ElementDrower(Header, SubHeader = false, Content, Type, index) {
-        /*Collect data from dataBase*/
-        // let dataBaseData = _.DB.Get()
         /* store inner contents of target html element*/
         let elements = [
             `<h2>${Header}</h2><p style="text-align: justify;">${Content}</p>`,
             `<h2>${Header}</h2><h3>${SubHeader}</h3><p style="text-align: justify;">${Content}</p>`
         ];
 
-        /*Create main parent element*/
         let Parent = _.HTMLcreate('div');
         Parent.className = 'section-title';
-        Parent.innerHTML = elements[Type];/*insert Content*/
-        /**Append Parent element to DOM*/
+        Parent.innerHTML = elements[Type];
         let AppendParent = _.Select('.ElementParent .allcontents');
         Parent.id = `NewElement${index}`;
         AppendParent.appendChild(Parent);
     }
 
-    /**
-     * Handles element drawing.
-    */
+    /*Handles element drawing.*/
     (function ElementDrawingAlgorithym() {
         let CurrentNoOfElements = JSON.parse(_.DB.Get('currentNum'));
         CurrentNoOfElements ?
@@ -43,7 +38,7 @@
                      * collects elements info from dataBase and sorts it according to its type
                      * inorder to assign propertites to the element drawer function
                      */
-                    if (Elements) {/*skips null elements stored in thie dataBase.*/
+                    if (Elements) { /*skips null elements stored in thie dataBase.*/
                         switch (parseInt(Elements.Type)) {
                             case 0:
                                 let stracture = {
@@ -121,10 +116,7 @@ let websiteImagies = [
     }
 })();
 
-/*
-    function writes website data to localStorage, then sheeps it to firebase.
-
-*/
+/*function writes website data to localStorage, then sheeps it to firebase.*/
 let retrive = {
     /*Saves text data to local storage.*/
     send_WriteToDataBase: function () {
