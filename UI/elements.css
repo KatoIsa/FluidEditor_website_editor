@@ -1,0 +1,179 @@
+.ElementParent{
+    /* margin: 40px; */
+    margin: auto;
+    max-width: 720px;
+}
+.imageele{
+    background: #333;
+    width: 50%;
+    height: 300px;
+    margin: auto;
+}
+
+/* element drower style */
+.elementDrawerContainer{
+    position: fixed;
+    background: #fff;
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    z-index: 3500;
+    top: 0px;
+}
+.drawmainelementparent{
+    display:block;
+}
+.elementDrawerContainer .eleHeader{
+    color: #19f;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 25px;
+    margin-left: 30px;
+    margin-top: 20px;
+}
+.elementDrawerContainer .ChooseElement{
+    width: 70%;
+    height: 80%;
+    margin: auto;
+    margin-top: -10px!important;
+    overflow: auto;
+    cursor: pointer;
+}
+@media (max-width:852px) {
+    .elementDrawerContainer .ChooseElement{
+        width: 100vw;
+    }
+}
+
+@media (max-width:597px){
+    .elementDrawerContainer .ChooseElement .el{
+        width: 90vw;
+        height: fit-content;
+    }
+}
+.elementDrawerContainer .el:nth-child(1){
+    margin-top: 50px;
+}
+.elementDrawerContainer .el{
+    background: #e1e8fc;
+    width: 500px;
+    height: 300px;
+    margin: auto;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 11px 3px rgb(0 0 0 / 26%);
+}
+
+.elementDrawerContainer .elEditer{
+    position: fixed;
+    width: 100vw;
+    height: 0;
+    overflow: hidden;
+    top: 0;
+    background: #ffffff;
+}
+.EditorDrowerfooter{
+    position: absolute;
+    background-color: #ffffff;
+    color: #333;
+    text-align: center;
+    width: fit-content;
+    padding: 10px;
+    border-radius: 20px;
+    margin-left: 50%;
+    margin-top: 30px;
+    transform: translateX(-50%);
+    box-shadow: 0px 0px 20px 0px #00000048;
+}
+.EditorDrowerfooter div{
+    display: inline;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+}
+.EditorDrowerfooter div:nth-child(2){
+    background: #ff3b34;
+    color: #fff;
+    padding: 5px 20px;
+    border-radius: 20px;
+    margin-left:15px;
+    cursor: pointer;
+}
+
+.close_elEditer{
+    height: 100vh!important;
+}
+.elEditer_footer{
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.elEditer_footer button{
+    background: #3cff6d;
+    color: #fff;
+    border: none;
+    outline: none;
+    padding: 5px 20px;
+    border-radius: 3px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.elEditer_footer button:nth-child(1){background: #ff3b34;}
+.elEditer_footer button:nth-child(2){color: #333;}
+
+/* classes (elEditer, elEditer_Header, elEditer_main( Header ,  EditrContent )) */
+.elEditer .elEditer_Header{
+    background: #19f;
+    padding: 5px 0px ;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+}
+.elEditer .elEditer_main{
+    background-color: #caffd7;
+    height:fit-content;
+    width: 80%;
+    height: 200px;
+    padding: 15px;
+    margin: auto;
+    margin-top: 100px;
+}
+.elEditer .elEditer_main textArea{
+    display: block;
+}
+.elEditer textArea{
+    background-color: #caffd7;
+    border: none;
+    outline: none;
+    text-align: center;
+    resize: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.elEditer .elEditer_main .SubHeader{
+    color: #555555;
+    font-weight: bold;
+    height: 30px;
+    width: fit-content;
+    font-weight: 19px!important;
+    text-align: left;
+}
+.elEditer .elEditer_main .Header{
+    margin: auto;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    height: 35px;
+    width: fit-content;
+    text-align: center;
+}
+.elEditer .elEditer_main  .Editorcontent {
+   width: 100%;
+   text-align: left;
+   height: 60%;
+}
+
+
+
+
+
+
+
+
