@@ -1,4 +1,5 @@
 /**
+* It will be very hard to understand mycode coz --> 
 * I used a library I created to change the way I write in javascript. 
 * Author -->         
 * Name          :Kato Isa 256
