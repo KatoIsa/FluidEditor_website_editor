@@ -77,17 +77,19 @@
 
 
 const db = firebase.firestore();
+/*array constaining all html tags except the image tags.*/
 let ele = [
     ..._.Select('li', true), ..._.Select('p', true), ..._.Select('h1', true), ..._.Select('h2', true),
-    ..._.Select('h3', true), ..._.Select('h4', true), ..._.Select('span', true)
-];
-/*Image Selection from DOM.*/
+    ..._.Select('h3', true), ..._.Select('h4', true), ..._.Select('span', true)];
+    
+/*Array containing all image properties: to be used in the addmarker algorythm.*/
 let websiteImagies = [
     ..._.Select('img', true), ..._.Select('div', true)
 ];
 
 /*this adds Id tags to thie filtereed elements in the DOM.*/
 (function addMarker() {
+    /*element marking algorythm. images(imgTags, divWithBackgroundImage) all other html tags*/
     for (i = 0, img = 0; i < ele.length, img < websiteImagies.length; i++, img++) {
         /*this filters out, empty elements and thie nav bar:*/
         ele[i].innerText.length != 0 && ele[i].offsetTop > 50 ? clearEmptyElements() : null;
@@ -97,26 +99,26 @@ let websiteImagies = [
         websiteImagies[img].style.backgroundImage ? InjectIdIntoDiv() : null;
     }
 
-    /**ID assignment function */
+    /**ID assignment function: inserts an id into the html elements. */
     function clearEmptyElements() {
         let marker = ele[i];
         marker.id += ` marker-${i}`;
     }
 
-    /*for img tagged elements*/
+    /*for img tagged elements: inserts an id into image tags. */
     function InjectIdIntoImage() {
         let imgMarker = websiteImagies[img];
         imgMarker.id = ` imgMarker-${img}`;
     }
 
-    /*for divs with background-imges*/
+    /*for divs with background-imges: inserts an image id into divs with an image background. */
     function InjectIdIntoDiv() {
         let imgMarker = websiteImagies[img];
         imgMarker.id = ` imgMarker-${img}`;
     }
 })();
 
-/*function writes website data to localStorage, then sheeps it to firebase.*/
+/*Objects contains methods that sheep data from local storage to firebase*/
 let retrive = {
     /*Saves text data to local storage.*/
     send_WriteToDataBase: function () {
