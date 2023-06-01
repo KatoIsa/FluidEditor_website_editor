@@ -10,7 +10,7 @@ Project contact methrough whatsApp ....
  -->
 
 # How to use Simplify.js? and how it works?
-Imagine of simplify.js as a big object that has functions for properties, each fucntion has its own task,
+Imagine simplify.js as a big object that has functions for properties, each fucntion has its own task,
 more like shortening thie javascript syntax.
 
 What is simplify.js? | how it came to be?
