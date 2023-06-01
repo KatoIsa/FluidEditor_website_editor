@@ -17,7 +17,7 @@
             `<h2>${Header}</h2><p style="text-align: justify;">${Content}</p>`,
             `<h2>${Header}</h2><h3>${SubHeader}</h3><p style="text-align: justify;">${Content}</p>`
         ];
-        
+
         /*Create main parent element*/
         let Parent = _.HTMLcreate('div');
         Parent.className = 'section-title';
@@ -75,13 +75,13 @@
                         _.Print('null object detected');
                     }
                 }
-            })(): _.Print('No elements stored');
+            })() : _.Print('No elements stored');
 
     })(); /*End of function*/
 })();
 
-const db = firebase.firestore();
 
+const db = firebase.firestore();
 let ele = [
     ..._.Select('li', true), ..._.Select('p', true), ..._.Select('h1', true), ..._.Select('h2', true),
     ..._.Select('h3', true), ..._.Select('h4', true), ..._.Select('span', true)
@@ -91,7 +91,8 @@ let websiteImagies = [
     ..._.Select('img', true), ..._.Select('div', true)
 ];
 
-(function addMarker() {/*this adds Id tags to thie filtereed elements in the DOM.*/
+/*this adds Id tags to thie filtereed elements in the DOM.*/
+(function addMarker() {
     for (i = 0, img = 0; i < ele.length, img < websiteImagies.length; i++, img++) {
         /*this filters out, empty elements and thie nav bar:*/
         ele[i].innerText.length != 0 && ele[i].offsetTop > 50 ? clearEmptyElements() : null;
@@ -100,24 +101,33 @@ let websiteImagies = [
         /*For div with background image prototype*/
         websiteImagies[img].style.backgroundImage ? InjectIdIntoDiv() : null;
     }
+
     /**ID assignment function */
     function clearEmptyElements() {
         let marker = ele[i];
         marker.id += ` marker-${i}`;
     }
-    function InjectIdIntoImage() { /*for img tagged elements*/
+
+    /*for img tagged elements*/
+    function InjectIdIntoImage() {
         let imgMarker = websiteImagies[img];
         imgMarker.id = ` imgMarker-${img}`;
     }
-    function InjectIdIntoDiv() { /*for divs with background-imges*/
+
+    /*for divs with background-imges*/
+    function InjectIdIntoDiv() {
         let imgMarker = websiteImagies[img];
         imgMarker.id = ` imgMarker-${img}`;
     }
 })();
 
-/*retrive data from data base Client: LocalStorage, AWS_DataCenter*/
+/*
+    function writes website data to localStorage, then sheeps it to firebase.
+
+*/
 let retrive = {
-    send_WriteToDataBase: function () { /*writes data to dataBase*/
+    /*Saves text data to local storage.*/
+    send_WriteToDataBase: function () {
         for (i = 0; i < ele.length; i++) {
             ele[i].innerText.length != 0 && ele[i].offsetTop > 50 ? emptyele() : null
             function emptyele() {
@@ -130,27 +140,32 @@ let retrive = {
             }
         }
     },
-    get_writeToWebsite: function () { /*retrives data from dataBase and writes to website*/
+
+    /*retrives data from dataBase and writes to website*/
+    get_writeToWebsite: function () {
         for (i = 0, img = 0; i < ele.length, img < websiteImagies.length; i++, img++) {
             ele[i].innerText.length != 0 && ele[i].offsetTop > 50 ? StartWriting() : null;
+
+            //dealing with text documents
             function StartWriting() {
                 db.collection(`${ele[i].id}`).doc(`${ele[i].id}`).get().then(function (doc) {
-                    /* let data = doc.data().data;*/
+                    /* injecting data into localStorage.*/
                     _.DB.Create(doc.data().ElementID, JSON.stringify(doc.data()));
                 }).catch(function (error) {
-                    _.Print("couldnt retrieve data from dataBase", error);
+                    _.Print("couldn't retrieve data from dataBase: Core.js", error);
                 });
 
                 let database_pull = JSON.parse(_.DB.Get(ele[i].id));
 
                 if (database_pull === null) {
-                    /* alert('initilising site ....'); */
+                    /* alert('initializing site ....'); */
                 } else {
                     /* writing to website: changing website text data.*/
                     database_pull.newData = ele[i].innerText ? ele[i].innerText = database_pull.newData : null;
                 }
             }
-            /*imges with tags*/
+
+            /*dealing with images that contain tags*/
             (function imagesWithTag() {
                 /* currentSrc */
                 websiteImagies[img].tagName == 'img' || websiteImagies[img].tagName == 'IMG' ?
@@ -163,7 +178,7 @@ let retrive = {
                                     let elementData = doc.data();
                                     _.DB.Create(`${elementData.data}`, JSON.stringify(elementData)), _.Print('Wait for data to load');
                                 }).catch(function () {
-                                    _.Print('Something went wrong couldnt write to LocalStorage line -- 93');
+                                    _.Print('Something went wrong couldnt write to LocalStorage: Core.js line -- 175');
                                 });
                         };
 
@@ -205,7 +220,8 @@ let retrive = {
                     })() : null;
             }
             )();
-            /*div elements with background images*/
+
+            /*dealing with div elements with background images*/
             (function divWithBg() {
                 const identifier = websiteImagies[img].style;
 
@@ -264,26 +280,27 @@ let retrive = {
 retrive.get_writeToWebsite();
 
 /*  end 🧐 */
-function excecutedatabase() {
+// Dead or silent function: was used to stracture the dataBase.
+// function excecutedatabase() {
 
-    for (i = 0; i < ele.length; i++) {
-        ele[i].innerText.length != 0 && ele[i].offsetTop > 50 ? emptyele() : null
-        function emptyele() {
-            let elementData = {
-                status: false,
-                ElementID: ele[i].id,
-                newData: ele[i].innerText
-            }
-            db.collection(`${elementData.ElementID}`).doc(`${elementData.ElementID}`).set({
-                newData: elementData.newData,
-                ElementID: elementData.ElementID
-            }).then(function () {
-                _.Print('data was successfully saved');
-            }).catch(function (error) {
-                _.Print('Unable to save data', error);
-            });
+//     for (i = 0; i < ele.length; i++) {
+//         ele[i].innerText.length != 0 && ele[i].offsetTop > 50 ? emptyele() : null
+//         function emptyele() {
+//             let elementData = {
+//                 status: false,
+//                 ElementID: ele[i].id,
+//                 newData: ele[i].innerText
+//             }
+//             db.collection(`${elementData.ElementID}`).doc(`${elementData.ElementID}`).set({
+//                 newData: elementData.newData,
+//                 ElementID: elementData.ElementID
+//             }).then(function () {
+//                 _.Print('data was successfully saved');
+//             }).catch(function (error) {
+//                 _.Print('Unable to save data', error);
+//             });
 
-        }
-    }
-}
+//         }
+//     }
+// }
 
