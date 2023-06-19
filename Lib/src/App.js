@@ -26,7 +26,7 @@ let APP = {
         _.Select('#OpenButton').addEventListener('click', function () {
             _.addClass(_.Select('#FormContainer'), 'addClass');
             _.removeClass(AppWindow, 'DrowWindow');
-            _.addClass(_.Select('#header'), 'Hidden');
+            // _.addClass(_.Select('#header'), 'Hidden');
             /* _.addClass(_.Select('.hiddenElem'), 'blur');*/
         });
 
@@ -296,13 +296,12 @@ let APP = {
                                         _.DB.Create(`${getImageId.data}`, JSON.stringify(getImageId));
 
                                         /* Listen and store imageDATA*/
-                                        _.Print('presumed ID', getImageId.data)
                                         db.collection(`${getImageId.data}`).doc(`${getImageId.data}`).update({
                                             NewImage: reader.result,
                                         }).then(function () {
                                             _.Print('New Image added to dataBase');
                                         }).catch(function () {
-                                            _.Print('Error somehtin went wrong, operation termnated');
+                                            _.Print('Error somehting went wrong, operation termnated');
                                         });
                                         alert('Changes will be made after Saving');
                                     }
@@ -348,22 +347,22 @@ let APP = {
 
                         /* DataListener {listen for data change and updates};*/
                         /* listent and store keyData.*/
-                        db.collection(`${Image_Child}`).doc(`${Image_Child}`).set({
-                            data: Image_Child,
-                        }).then(() => {
-                            _.Print('Key was added sucessfully');
-                        }).catch(() => {
-                            _.Print('Erorr ckey was never added');
-                        });
+                        // db.collection(`${Image_Child}`).doc(`${Image_Child}`).set({
+                        //     data: Image_Child,
+                        // }).then(() => {
+                        //     _.Print('Key was added sucessfully');
+                        // }).catch(() => {
+                        //     _.Print('Erorr ckey was never added');
+                        // });
 
-                        /* Listen and store CurentImaage*/
-                        db.collection('current').doc('current').set({
-                            data: Image_Child
-                        }).then(() => {
-                            _.Print('Current image stored succesfully');
-                        }).catch(() => {
-                            _.Print('Erorr current Image wasn\'t stored');
-                        });
+                        // /* Listen and store CurentImaage*/
+                        // db.collection('current').doc('current').set({
+                        //     data: Image_Child
+                        // }).then(() => {
+                        //     _.Print('Current image stored succesfully');
+                        // }).catch(() => {
+                        //     _.Print('Erorr current Image wasn\'t stored');
+                        // });
 
                     })();
                 });
@@ -618,8 +617,8 @@ let APP = {
                         _.addClass(_.Select('.AppName'), 'Create');
                         _.removeClass(_.Select('#FormContainer'), 'addClass');
 
-                        _.addClass(_.Select('#header'), 'Hidden');
-                        _.addClass(_.Select('#topbar'), 'THidden');
+                        // _.addClass(_.Select('#header'), 'Hidden');
+                        // _.addClass(_.Select('#topbar'), 'THidden');
                         AppElements.innerHTML = GetData;
                         /* _.addClass(_.Select('.hiddenElem'), 'ChangeBody');*/
                         Saving_website_data();

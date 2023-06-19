@@ -8,7 +8,7 @@
 
 /* function adds html objects on the website.*/
 (function DRAWHTMLELEMENTS() {
-    
+
     /* re-usable function for creating different html elements.*/
     function HTML_ElementDrower(Header, SubHeader = false, Content, Type, index) {
         /* store inner contents of target html element*/
@@ -76,12 +76,13 @@
 })();
 
 
-const db = firebase.firestore();
+// const db = firebase.firestore();
+const db = function dust() { }
 /*array constaining all html tags except the image tags.*/
 let ele = [
     ..._.Select('li', true), ..._.Select('p', true), ..._.Select('h1', true), ..._.Select('h2', true),
     ..._.Select('h3', true), ..._.Select('h4', true), ..._.Select('span', true)];
-    
+
 /*Array containing all image properties: to be used in the addmarker algorythm.*/
 let websiteImagies = [
     ..._.Select('img', true), ..._.Select('div', true)
@@ -92,7 +93,9 @@ let websiteImagies = [
     /*element marking algorythm. images(imgTags, divWithBackgroundImage) all other html tags*/
     for (i = 0, img = 0; i < ele.length, img < websiteImagies.length; i++, img++) {
         /*this filters out, empty elements and thie nav bar:*/
-        ele[i].innerText.length != 0 && ele[i].offsetTop > 50 ? clearEmptyElements() : null;
+        if (ele[i] != undefined) {
+            ele[i].innerText.length != 0 && ele[i].offsetTop > 50 ? clearEmptyElements() : null;
+        }
         /*For all img elements in thie DOM*/
         websiteImagies[img].tagName == 'img' || websiteImagies[img].tagName == 'IMG' ? InjectIdIntoImage() : null;
         /*For div with background image prototype*/
@@ -138,7 +141,7 @@ let retrive = {
     /*retrives data from dataBase and writes to website*/
     get_writeToWebsite: function () {
         for (i = 0, img = 0; i < ele.length, img < websiteImagies.length; i++, img++) {
-            
+
             ele[i].innerText.length != 0 && ele[i].offsetTop > 50 ? StartWriting() : null;
 
             /*fireebase inserts data into local storage then data is sheeped from local storage to page*/
@@ -273,7 +276,7 @@ let retrive = {
         }
     },
 }
-retrive.get_writeToWebsite();
+// retrive.get_writeToWebsite();
 
 /*  end 🧐 */
 // Dead or silent function: was used to stracture the dataBase.
