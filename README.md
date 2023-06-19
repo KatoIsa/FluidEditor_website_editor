@@ -1,11 +1,11 @@
 # fluidmanager_site_editor.
-Javascript library that edits websites without the need to do any fancy loging into a cpanel or wordpress dashboard etc.
+Javascript library that edits websites without the need to do any fancy logging into a cpanel or WordPress dashboard etc.
 
 ## `ALERT`
 This project uses my library called simplify.js, it changes the syntax you 
 might not understand it at first look through the library
 
-## `Simplify.js ->` [Here](https://git@github.com:KatoIsa/Simplified_JS.git)
+## `Simplify.js ->` [Here]([https://git@github.com:KatoIsa/Simplified_JS.git](https://github.com/KatoIsa/Simplified_JS.git))
 
 ## ADMIN LOG-IN.
 ![alt text](./Lib/icons/mdimage.png)
