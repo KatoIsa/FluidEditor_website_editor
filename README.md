@@ -7,7 +7,6 @@ might not understand it at first look through the library
 
 ## `Simplify.js ->` [Here](https://github.com/KatoIsa/FluidEditor_website_editor.git)
 
-## ADMIN LOG-IN.
 # ADMIN LOG-IN.
 ![alt text](./Lib/icons/mdimage.png)
 
