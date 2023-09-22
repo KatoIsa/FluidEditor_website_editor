@@ -1,12 +1,12 @@
 /*
- File contains algorithym that chages and edits all content in the page.
- Like
+ File contains algorithm that changes and edits all content in the page.
  It besically manipulates the DOM.
+
        Author: Kato-Isa-Omoding
        Website: https:/*katoisa256.ga
 */
 
-/* function adds html objects on the website.*/
+/* function adds html objects to the current page the user is editing.*/
 (function DRAWHTMLELEMENTS() {
 
     /* re-usable function for creating different html elements.*/
@@ -36,7 +36,7 @@
                     /*
                      * element filter algorythim:
                      * collects elements info from dataBase and sorts it according to its type
-                     * inorder to assign propertites to the element drawer function
+                     * in order to assign propertites to the element drawer function
                      */
                     if (Elements) { /*skips null elements stored in thie dataBase.*/
                         switch (parseInt(Elements.Type)) {
