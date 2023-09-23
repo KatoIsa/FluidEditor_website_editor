@@ -6,7 +6,7 @@
        Website: https:/*katoisa256.ga
 */
 
-/* function adds html objects on the website.*/
+/* function adds html elements on the website.*/
 (function DRAWHTMLELEMENTS() {
 
     /* re-usable function for creating different html elements.*/
@@ -80,12 +80,19 @@
 const db = function dust() { }
 /*array constaining all html tags except the image tags.*/
 let ele = [
-    ..._.Select('li', true), ..._.Select('p', true), ..._.Select('h1', true), ..._.Select('h2', true),
-    ..._.Select('h3', true), ..._.Select('h4', true), ..._.Select('span', true)];
+    ..._.Select('li', true),
+    ..._.Select('p', true), 
+    ..._.Select('h1', true), 
+    ..._.Select('h2', true),
+    ..._.Select('h3', true), 
+    ..._.Select('h4', true), 
+    ..._.Select('span', true)
+];
 
 /*Array containing all image properties: to be used in the addmarker algorythm.*/
 let websiteImagies = [
-    ..._.Select('img', true), ..._.Select('div', true)
+    ..._.Select('img', true), 
+    ..._.Select('div', true)
 ];
 
 /*this adds Id tags to thie filtereed elements in the DOM.*/
@@ -279,9 +286,9 @@ let retrive = {
 // retrive.get_writeToWebsite();
 
 /*  end 🧐 */
-// Dead or silent function: was used to stracture the dataBase.
-// function excecutedatabase() {
+// function: was used to stracture the dataBase.
 
+// function excecutedatabase() {
 //     for (i = 0; i < ele.length; i++) {
 //         ele[i].innerText.length != 0 && ele[i].offsetTop > 50 ? emptyele() : null
 //         function emptyele() {
